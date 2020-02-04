@@ -1,0 +1,32 @@
+jenkins:
+  systemMessage: "configure with JCasC plugin v2\n\n" 
+security:
+    globalJobDslSecurityConfiguration:
+                     useScriptSecurity: false 
+jobs:
+  - script: > 
+     job('seed') {
+         steps {
+             dsl {
+                 text('''pipelineJob('pipelinejob') {
+      definition {
+        cpsScm {
+           scriptPath 'jenkinsfile' 
+           scm {
+             git {
+                  remote {url 'https://github.com/trap1703/Hillel_Task_10_my.git'}
+                  branch '*/master' 
+                  extensions {}
+             }
+           }
+        }
+      }
+     }\n
+     queue('pipelinejob')''')
+                 removeAction('DISABLE')
+                 ignoreExisting()
+                 additionalClasspath('lib')
+             }
+         }
+     }
+

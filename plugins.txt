@@ -1,0 +1,6 @@
+git:latest
+job-dsl:latest
+configuration-as-code:latest
+configuration-as-code-support:latest
+workflow-aggregator:latest
+workflow-cps-global-lib:latest
